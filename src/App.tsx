@@ -4,6 +4,7 @@ import React, { Suspense } from 'react';
 import AddList from './components/AddList';
 import ToDoLists from './components/ToDoLists';
 import Loader from './components/Loader';
+import Header from './components/Header';
 
 //Styles
 import './fonts.css';
@@ -13,6 +14,7 @@ const App: React.FC = () => {
   return (
     <Suspense fallback={<Loader />}>
       <AppContainer>
+        <Header />
         <AddList />
         <ToDoLists />
       </AppContainer>
