@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'MontserratSemiBold';
+  font-weight: 600;
+  src: local('MontserratSemiBold'),
+    url('./assets/fonts/Montserrat-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratBlack';
+  font-weight: 900;
+  src: local('MontserratBlack'),
+    url('./assets/fonts/Montserrat-Black.ttf') format('truetype');
+}
