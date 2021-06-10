@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
-const initialState: IToDoLists = {
+const initialState: IListsState = {
   lists: [],
 };
 
@@ -26,6 +26,6 @@ export const listsSlice = createSlice({
 
 export const { createList, deleteList } = listsSlice.actions;
 
-export const selectLists = (state: RootState) => state.lists;
+export const selectLists = (state: RootState) => state.lists.lists;
 
 export default listsSlice.reducer;
