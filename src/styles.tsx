@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 export const AppContainer = styled.div`
   min-height: 100vh;
   display: grid;
+  grid-template-rows: 90px 90px auto;
   place-items: center;
   font-size: calc(10px + 2vmin);
 `;
