@@ -60,6 +60,7 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
             text={task.text}
             listTitle={task.listTitle}
             active={task.active}
+            taskIndex={index}
           />
         ))}
       {expanded && !tasks.length && <div>{t('noTasks')}</div>}
