@@ -1,11 +1,11 @@
 interface ITask {
   text: string;
   active: boolean;
-  listIndex: number;
+  listTitle: string;
 }
 
 interface IList {
-  name: string;
+  title: string;
   description: string;
   active: boolean;
 }
