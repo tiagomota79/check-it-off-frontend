@@ -9,13 +9,13 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectTasks } from '../../slices/tasksSlice';
 
 export interface IProps {
-  name: string;
+  title: string;
   description: string;
   active: boolean;
   index: number;
 }
 
-const List: React.FC<IProps> = ({ name, description, active, index }) => {
+const List: React.FC<IProps> = ({ title, description, active, index }) => {
   const [createTaskOpen, setCreateTaskOpen] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(false);
 
@@ -23,7 +23,7 @@ const List: React.FC<IProps> = ({ name, description, active, index }) => {
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks).filter(
-    (task) => task.listIndex === index
+    (task) => task.listTitle === title
   );
 
   const deleteListAction = () => {
@@ -43,13 +43,13 @@ const List: React.FC<IProps> = ({ name, description, active, index }) => {
       <button onClick={() => setExpanded(!expanded)}>
         {expanded ? t('hideTasks') : t('seeTasks')}
       </button>
-      <div>{name}</div>
+      <div>{title}</div>
       <div>{description}</div>
       {!createTaskOpen && (
         <button onClick={createTaskAction}>{t('createTask')}</button>
       )}
       {createTaskOpen && (
-        <AddTask listIndex={index} onCloseButton={setCreateTaskOpen} />
+        <AddTask listTitle={title} onCloseButton={setCreateTaskOpen} />
       )}
       <button onClick={deleteListAction}>{t('deleteList')}</button>
       {expanded &&
@@ -58,11 +58,11 @@ const List: React.FC<IProps> = ({ name, description, active, index }) => {
           <Task
             key={index}
             text={task.text}
-            listIndex={task.listIndex}
+            listTitle={task.listTitle}
             active={task.active}
           />
         ))}
-      {expanded && tasks.length < 0 && <div>{t('noTasks')}</div>}
+      {expanded && !tasks.length && <div>{t('noTasks')}</div>}
     </>
   );
 };

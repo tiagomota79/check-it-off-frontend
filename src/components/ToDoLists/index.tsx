@@ -19,7 +19,7 @@ const ToDoLists: React.FC = () => {
       {lists.map((list, index) => (
         <div key={index}>
           <List
-            name={list.name}
+            title={list.title}
             description={list.description}
             active={list.active}
             index={index}
