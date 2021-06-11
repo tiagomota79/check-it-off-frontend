@@ -1,0 +1,15 @@
+{
+    "nightMode": "Mode nuit",
+    "noList": "Pas encore de listes. Créer une!",
+    "title": "Titre",
+    "description": "Description",
+    "addAList": "Ajouter une liste",
+    "addList": "Ajouter la liste",
+    "deleteList": "Supprimer la liste",
+    "seeTasks": "Voir les tâches",
+    "hideTasks": "Masquer les tâches",
+    "createTask": "Créer une tâche",
+    "deleteTask": "Supprimer la tâche",
+    "noTasks": "Aucune tâche pour le moment. Créer une!",
+    "cancel": "Annuler"
+}
