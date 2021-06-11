@@ -1,21 +1,25 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { StringDecoder } from 'string_decoder';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { deleteTask, selectTasks } from '../../slices/tasksSlice';
+import { toggleTask, deleteTask, selectTasks } from '../../slices/tasksSlice';
 
 export interface IProps {
   text: string;
   listTitle: string;
   active: boolean;
+  taskIndex: number;
 }
 
-const Task: React.FC<IProps> = ({ text, listTitle, active }) => {
+const Task: React.FC<IProps> = ({ text, listTitle, active, taskIndex }) => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks);
+
+  const checkTaskAction = () => {
+    dispatch(toggleTask(taskIndex));
+  };
 
   const deleteTaskAction = () => {
     const taskIndex = tasks.findIndex(
@@ -27,7 +31,12 @@ const Task: React.FC<IProps> = ({ text, listTitle, active }) => {
 
   return (
     <>
-      <div>{text}</div>
+      <div>
+        {text} - index: {taskIndex} - active: {String(active)}
+      </div>
+      <button onClick={checkTaskAction}>
+        {active ? t('checkTask') : t('uncheckTask')}
+      </button>
       <button onClick={deleteTaskAction}>{t('deleteTask')}</button>
     </>
   );
