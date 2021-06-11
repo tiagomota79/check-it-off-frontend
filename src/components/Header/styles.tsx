@@ -6,8 +6,3 @@ export const HeaderContainer = styled.div`
   place-items: center;
   width: 100%;
 `;
-
-export const Logo = styled.div`
-  font-family: MontserratBlack;
-  font-size: 42px;
-`;
