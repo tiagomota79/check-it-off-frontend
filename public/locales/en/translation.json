@@ -1,0 +1,15 @@
+{
+    "nightMode": "Night Mode",
+    "noList": "No lists yet. Create one!",
+    "title": "Title",
+    "description": "Description",
+    "addAList": "Add list",
+    "addList": "Add list",
+    "deleteList": "Delete list",
+    "seeTasks": "See tasks",
+    "hideTasks": "Hide tasks",
+    "createTask": "Create task",
+    "deleteTask": "Delete task",
+    "noTasks": "No tasks yet. Create one!",
+    "cancel": "Cancel"
+}

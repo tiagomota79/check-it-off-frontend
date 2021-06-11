@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch } from '../../hooks/hooks';
 
@@ -12,12 +13,10 @@ export interface IProps {
 const AddTask: React.FC<IProps> = ({ listIndex, onCloseButton }) => {
   const [taskText, setTaskText] = useState<ITask['text']>();
 
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const addTaskAction = () => {
-    console.log(
-      `inside addTaskAction, task text: ${taskText}. listIndex: ${listIndex}`
-    );
     dispatch(
       createTask({
         text: taskText,
@@ -40,8 +39,8 @@ const AddTask: React.FC<IProps> = ({ listIndex, onCloseButton }) => {
         name='task'
         onChange={(event) => setTaskText(event.target.value)}
       ></input>
-      <button onClick={addTaskAction}>Add Task</button>
-      <button onClick={cancelAction}>Cancel</button>
+      <button onClick={addTaskAction}>{t('addTask')}</button>
+      <button onClick={cancelAction}>{t('cancel')}</button>
     </>
   );
 };
