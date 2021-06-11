@@ -6,7 +6,7 @@ import { createList } from '../../slices/listsSlice';
 
 const AddList: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
-  const [listName, setListName] = useState<IList['name']>();
+  const [listTitle, setListTitle] = useState<IList['title']>();
   const [listDescription, setListDescription] =
     useState<IList['description']>();
 
@@ -20,7 +20,7 @@ const AddList: React.FC = () => {
   const addListAction = () => {
     dispatch(
       createList({
-        name: listName,
+        title: listTitle,
         description: listDescription,
         active: true,
       })
@@ -37,7 +37,7 @@ const AddList: React.FC = () => {
           <input
             type='text'
             name='name'
-            onChange={(event) => setListName(event.target.value)}
+            onChange={(event) => setListTitle(event.target.value)}
           ></input>
           <label>{t('description')}</label>
           <input

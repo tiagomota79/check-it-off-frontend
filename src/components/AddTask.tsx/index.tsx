@@ -6,11 +6,11 @@ import { useAppDispatch } from '../../hooks/hooks';
 import { createTask } from '../../slices/tasksSlice';
 
 export interface IProps {
-  listIndex: number;
+  listTitle: string;
   onCloseButton: (close: boolean) => void;
 }
 
-const AddTask: React.FC<IProps> = ({ listIndex, onCloseButton }) => {
+const AddTask: React.FC<IProps> = ({ listTitle, onCloseButton }) => {
   const [taskText, setTaskText] = useState<ITask['text']>();
 
   const { t } = useTranslation();
@@ -20,7 +20,7 @@ const AddTask: React.FC<IProps> = ({ listIndex, onCloseButton }) => {
     dispatch(
       createTask({
         text: taskText,
-        listIndex,
+        listTitle,
         active: true,
       })
     );
@@ -33,7 +33,7 @@ const AddTask: React.FC<IProps> = ({ listIndex, onCloseButton }) => {
 
   return (
     <>
-      <label>Task</label>
+      <label>{t('task')}</label>
       <input
         type='text'
         name='task'
