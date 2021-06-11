@@ -11,6 +11,8 @@
     "hideTasks": "Masquer les tâches",
     "createTask": "Créer une tâche",
     "deleteTask": "Supprimer la tâche",
+    "checkTask": "Cocher la tâche",
+    "uncheckTask": "Décocher la tâche",
     "noTasks": "Aucune tâche pour le moment. Créer une!",
     "cancel": "Annuler"
 }

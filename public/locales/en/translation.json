@@ -11,6 +11,8 @@
     "hideTasks": "Hide tasks",
     "createTask": "Create task",
     "deleteTask": "Delete task",
+    "checkTask": "Check task",
+    "uncheckTask": "Uncheck task",
     "noTasks": "No tasks yet. Create one!",
     "cancel": "Cancel"
 }
