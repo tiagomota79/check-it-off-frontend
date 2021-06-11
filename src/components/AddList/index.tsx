@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch } from '../../hooks/hooks';
 import { createList } from '../../slices/listsSlice';
@@ -9,6 +10,7 @@ const AddList: React.FC = () => {
   const [listDescription, setListDescription] =
     useState<IList['description']>();
 
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const activeAddList = () => {
@@ -28,22 +30,22 @@ const AddList: React.FC = () => {
 
   return (
     <div>
-      {!active && <button onClick={activeAddList}>Add List</button>}
+      {!active && <button onClick={activeAddList}>{t('addAList')}</button>}
       {active && (
         <>
-          <label>Name</label>
+          <label>{t('title')}</label>
           <input
             type='text'
             name='name'
             onChange={(event) => setListName(event.target.value)}
           ></input>
-          <label>Description</label>
+          <label>{t('description')}</label>
           <input
             type='text'
             name='description'
             onChange={(event) => setListDescription(event.target.value)}
           ></input>
-          <button onClick={addListAction}>Add List</button>
+          <button onClick={addListAction}>{t('addList')}</button>
         </>
       )}
     </div>

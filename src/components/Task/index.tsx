@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { deleteTask, selectTasks } from '../../slices/tasksSlice';
@@ -10,6 +11,7 @@ export interface IProps {
 }
 
 const Task: React.FC<IProps> = ({ text, listIndex, active }) => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks);
@@ -25,7 +27,7 @@ const Task: React.FC<IProps> = ({ text, listIndex, active }) => {
   return (
     <>
       <div>{text}</div>
-      <button onClick={deleteTaskAction}>Delete task</button>
+      <button onClick={deleteTaskAction}>{t('deleteTask')}</button>
     </>
   );
 };

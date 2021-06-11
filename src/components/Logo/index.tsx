@@ -1,8 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-regular-svg-icons';
-
 import { useTranslation } from 'react-i18next';
+import { CheckCircle } from '@styled-icons/heroicons-outline';
 
 import { LogoStyles } from './styles';
 
@@ -15,12 +13,12 @@ const Logo: React.FC = () => {
   const logoContent =
     language === Languages.EN ? (
       <LogoStyles>
-        CHECK IT <FontAwesomeIcon icon={faCheckCircle} />
+        CHECK IT <CheckCircle size='40' />
         FF!
       </LogoStyles>
     ) : (
       <LogoStyles>
-        C<FontAwesomeIcon icon={faCheckCircle} />
+        C<CheckCircle size='40' />
         CHEZ-LE!
       </LogoStyles>
     );

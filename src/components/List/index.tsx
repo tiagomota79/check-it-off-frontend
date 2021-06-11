@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import AddTask from '../AddTask.tsx';
 import Task from '../Task';
@@ -17,6 +18,8 @@ export interface IProps {
 const List: React.FC<IProps> = ({ name, description, active, index }) => {
   const [createTaskOpen, setCreateTaskOpen] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(false);
+
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks).filter(
@@ -37,26 +40,29 @@ const List: React.FC<IProps> = ({ name, description, active, index }) => {
 
   return (
     <>
-      <button onClick={() => setExpanded(!expanded)}>See/hide tasks</button>
+      <button onClick={() => setExpanded(!expanded)}>
+        {expanded ? t('hideTasks') : t('seeTasks')}
+      </button>
       <div>{name}</div>
       <div>{description}</div>
       {!createTaskOpen && (
-        <button onClick={createTaskAction}>Create task</button>
+        <button onClick={createTaskAction}>{t('createTask')}</button>
       )}
       {createTaskOpen && (
         <AddTask listIndex={index} onCloseButton={setCreateTaskOpen} />
       )}
-      <button onClick={deleteListAction}>Delete list</button>
+      <button onClick={deleteListAction}>{t('deleteList')}</button>
       {expanded &&
-        tasks.length &&
+        tasks.length > 0 &&
         tasks.map((task, index) => (
           <Task
+            key={index}
             text={task.text}
             listIndex={task.listIndex}
             active={task.active}
           />
         ))}
-      {expanded && !tasks.length && <div>No tasks yet. Create one!</div>}
+      {expanded && tasks.length < 0 && <div>{t('noTasks')}</div>}
     </>
   );
 };

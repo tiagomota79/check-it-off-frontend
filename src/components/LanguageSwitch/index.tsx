@@ -17,7 +17,7 @@ const LanguageSwitch: React.FC = () => {
         changeLanguage(language === Languages.EN ? Languages.FR : Languages.EN)
       }
     >
-      {language === Languages.EN ? 'En' : 'Fr'}
+      {language === Languages.EN ? 'Fr' : 'En'}
     </Switcher>
   );
 };
