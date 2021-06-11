@@ -10,7 +10,6 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <div />
       <Logo />
-      <div>Night</div>
       <LanguageSwitch />
     </HeaderContainer>
   );

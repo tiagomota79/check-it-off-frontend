@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import Button from '../Button';
+
+import { AddListContainer, Input, Label } from './styles';
+
 import { useAppDispatch } from '../../hooks/hooks';
 import { createList } from '../../slices/listsSlice';
+import { Icons } from '../../constants/icons';
 
 const AddList: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
@@ -13,8 +18,8 @@ const AddList: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
-  const activeAddList = () => {
-    setActive(true);
+  const toggleAddList = () => {
+    setActive(!active);
   };
 
   const addListAction = () => {
@@ -29,26 +34,34 @@ const AddList: React.FC = () => {
   };
 
   return (
-    <div>
-      {!active && <button onClick={activeAddList}>{t('addAList')}</button>}
+    <AddListContainer>
+      {!active && (
+        <Button
+          label={t('addAList')}
+          action={toggleAddList}
+          icon={Icons.Plus}
+          withMargin={false}
+        />
+      )}
       {active && (
         <>
-          <label>{t('title')}</label>
-          <input
+          <Label>{t('title')}</Label>
+          <Input
             type='text'
             name='name'
             onChange={(event) => setListTitle(event.target.value)}
-          ></input>
-          <label>{t('description')}</label>
-          <input
+          ></Input>
+          <Label>{t('description')}</Label>
+          <Input
             type='text'
             name='description'
             onChange={(event) => setListDescription(event.target.value)}
-          ></input>
-          <button onClick={addListAction}>{t('addList')}</button>
+          ></Input>
+          <Button action={addListAction} icon={Icons.Plus} withMargin />
+          <Button action={toggleAddList} icon={Icons.Cancel} withMargin />
         </>
       )}
-    </div>
+    </AddListContainer>
   );
 };
 export default AddList;

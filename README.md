@@ -1,3 +1,23 @@
+# To Do App
+
+This simple to do app was created by **Tiago Mota** for _Annexxe Développement_.
+
+Simple application using React, Redux,  without backend - thus non-persistent.
+
+Basic features:
+- Create/delete lists
+- Add tasks to lists
+- Show/hide tasks to each list
+- Check/uncheck tasks
+- Delete tasks
+- Localized English/French
+
+Basic styling with `styled-components`.
+Icons from `styled-icons`.
+Localization with `react-i18next`.
+
+___
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts

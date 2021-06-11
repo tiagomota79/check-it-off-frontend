@@ -11,8 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Roboto', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,7 +26,8 @@ export const GlobalStyle = createGlobalStyle`
 export const AppContainer = styled.div`
   min-height: 100vh;
   display: grid;
-  grid-template-rows: 90px 90px auto;
+  grid-template-rows: 90px 65px auto;
   place-items: center;
   font-size: calc(10px + 2vmin);
+  width: 100%;
 `;

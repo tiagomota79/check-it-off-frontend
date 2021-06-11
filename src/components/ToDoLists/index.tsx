@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 
 import List from '../List';
 
+import { ListContainer, ToDoListsContainer } from './styles';
+
 import { useAppSelector } from '../../hooks/hooks';
 import { selectLists } from '../../slices/listsSlice';
 
@@ -11,22 +13,23 @@ const ToDoLists: React.FC = () => {
   const lists = useAppSelector(selectLists);
 
   if (!lists.length) {
-    return <div>{t('noList')}</div>;
+    return <ToDoListsContainer>{t('noList')}</ToDoListsContainer>;
   }
 
   return (
-    <div>
+    <ToDoListsContainer>
       {lists.map((list, index) => (
-        <div key={index}>
+        <ListContainer key={index}>
           <List
             title={list.title}
             description={list.description}
             active={list.active}
             index={index}
+            key={index}
           />
-        </div>
+        </ListContainer>
       ))}
-    </div>
+    </ToDoListsContainer>
   );
 };
 
