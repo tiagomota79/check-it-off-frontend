@@ -1,14 +1,17 @@
 import React from 'react';
 
-import { HeaderContainer, Logo } from './styles';
+import LanguageSwitch from '../LanguageSwitch';
+import Logo from '../Logo';
+
+import { HeaderContainer } from './styles';
 
 const Header: React.FC = () => {
   return (
     <HeaderContainer>
       <div />
-      <Logo>Check It Off!</Logo>
+      <Logo />
       <div>Night</div>
-      <div>Lang</div>
+      <LanguageSwitch />
     </HeaderContainer>
   );
 };
