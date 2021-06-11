@@ -10,7 +10,6 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     createTask: (state, action) => {
-      console.log('inside createTask');
       const tasksCopy = [...state.tasks];
       tasksCopy.push(action.payload);
 
