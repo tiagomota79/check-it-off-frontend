@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import AddTask from '../AddTask.tsx';
+import AddTask from '../AddTask';
 import Task from '../Task';
+import Button from '../Button';
+
+import {
+  ListButtons,
+  ListDescription,
+  ListHeader,
+  ListTitle,
+  NoTasks,
+} from './styles';
 
 import { deleteList } from '../../slices/listsSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectTasks } from '../../slices/tasksSlice';
+import { Icons } from '../../constants/icons';
 
 export interface IProps {
   title: string;
@@ -26,6 +36,10 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
     (task) => task.listTitle === title
   );
 
+  const expandToggle = () => {
+    setExpanded(!expanded);
+  };
+
   const deleteListAction = () => {
     dispatch(deleteList(index));
   };
@@ -40,18 +54,38 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
 
   return (
     <>
-      <button onClick={() => setExpanded(!expanded)}>
-        {expanded ? t('hideTasks') : t('seeTasks')}
-      </button>
-      <div>{title}</div>
-      <div>{description}</div>
-      {!createTaskOpen && (
-        <button onClick={createTaskAction}>{t('createTask')}</button>
-      )}
+      <ListHeader>
+        <div>
+          <ListTitle>{title}</ListTitle>
+          <ListDescription>{description}</ListDescription>
+        </div>
+
+        <Button
+          action={deleteListAction}
+          label={t('deleteList')}
+          icon={Icons.Trash}
+          withMargin={false}
+        />
+      </ListHeader>
+      <ListButtons>
+        <Button
+          action={expandToggle}
+          label={expanded ? t('hideTasks') : t('seeTasks')}
+          icon={expanded ? Icons.EyeClosed : Icons.EyeOpen}
+          withMargin
+        />
+        {!createTaskOpen && (
+          <Button
+            action={createTaskAction}
+            label={t('createTask')}
+            icon={Icons.Clipboard}
+            withMargin
+          />
+        )}
+      </ListButtons>
       {createTaskOpen && (
         <AddTask listTitle={title} onCloseButton={setCreateTaskOpen} />
       )}
-      <button onClick={deleteListAction}>{t('deleteList')}</button>
       {expanded &&
         tasks.length > 0 &&
         tasks.map((task, index) => (
@@ -60,10 +94,9 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
             text={task.text}
             listTitle={task.listTitle}
             active={task.active}
-            taskIndex={index}
           />
         ))}
-      {expanded && !tasks.length && <div>{t('noTasks')}</div>}
+      {expanded && !tasks.length && <NoTasks>{t('noTasks')}</NoTasks>}
     </>
   );
 };

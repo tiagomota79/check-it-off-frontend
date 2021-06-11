@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useAppDispatch } from '../../hooks/hooks';
+import Button from '../Button';
 
+import { AddTaskButtons, AddTaskContainer } from './styles';
+import { Input, Label } from '../AddList/styles';
+
+import { useAppDispatch } from '../../hooks/hooks';
 import { createTask } from '../../slices/tasksSlice';
+import { Icons } from '../../constants/icons';
 
 export interface IProps {
   listTitle: string;
@@ -32,16 +37,18 @@ const AddTask: React.FC<IProps> = ({ listTitle, onCloseButton }) => {
   };
 
   return (
-    <>
-      <label>{t('task')}</label>
-      <input
+    <AddTaskContainer>
+      <Label>{t('task')}</Label>
+      <Input
         type='text'
         name='task'
         onChange={(event) => setTaskText(event.target.value)}
-      ></input>
-      <button onClick={addTaskAction}>{t('addTask')}</button>
-      <button onClick={cancelAction}>{t('cancel')}</button>
-    </>
+      />
+      <AddTaskButtons>
+        <Button action={addTaskAction} icon={Icons.Plus} withMargin />
+        <Button action={cancelAction} icon={Icons.Cancel} withMargin={false} />
+      </AddTaskButtons>
+    </AddTaskContainer>
   );
 };
 export default AddTask;
