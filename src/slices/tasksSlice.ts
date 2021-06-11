@@ -21,23 +21,19 @@ export const tasksSlice = createSlice({
 
       return { ...state, tasks: tasksCopy };
     },
-    checkOffTask: (state, action) => {
+    toggleTask: (state, action) => {
+      const taskIndex = action.payload;
       const tasksCopy = [...state.tasks];
-      tasksCopy[action.payload].active = false;
-
-      return { ...state, tasks: tasksCopy };
-    },
-    uncheckTask: (state, action) => {
-      const tasksCopy = [...state.tasks];
-      tasksCopy[action.payload].active = true;
+      const taskToCheckCopy = { ...tasksCopy[taskIndex] };
+      taskToCheckCopy.active = !taskToCheckCopy.active;
+      tasksCopy.splice(taskIndex, 1, taskToCheckCopy);
 
       return { ...state, tasks: tasksCopy };
     },
   },
 });
 
-export const { createTask, deleteTask, checkOffTask, uncheckTask } =
-  tasksSlice.actions;
+export const { createTask, deleteTask, toggleTask } = tasksSlice.actions;
 
 export const selectTasks = (state: RootState) => state.tasks.tasks;
 
