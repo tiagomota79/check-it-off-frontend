@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import List from '../List';
@@ -7,10 +7,13 @@ import { ListContainer, ToDoListsContainer } from './styles';
 
 import { useAppSelector } from '../../hooks/hooks';
 import { selectLists } from '../../slices/listsSlice';
+import { ThemeContext } from 'styled-components';
 
 const ToDoLists: React.FC = () => {
   const { t } = useTranslation();
   const lists = useAppSelector(selectLists);
+
+  const themeContext = useContext(ThemeContext);
 
   if (!lists.length) {
     return <ToDoListsContainer>{t('noList')}</ToDoListsContainer>;
@@ -19,7 +22,7 @@ const ToDoLists: React.FC = () => {
   return (
     <ToDoListsContainer>
       {lists.map((list, index) => (
-        <ListContainer key={index}>
+        <ListContainer key={index} theme={themeContext}>
           <List
             title={list.title}
             description={list.description}

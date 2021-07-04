@@ -17,3 +17,7 @@ interface IListsState {
 interface ITasksState {
   tasks: ITask[];
 }
+
+interface IThemeState {
+  theme: string;
+}

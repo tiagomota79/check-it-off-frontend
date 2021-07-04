@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 // Components
 import AddList from './components/AddList';
@@ -7,17 +8,35 @@ import Loader from './components/Loader';
 import Header from './components/Header';
 
 //Styles
+import { GlobalStyle, AppContainer } from './global';
+import { lightSide, darkSide } from './theme';
 import './fonts.css';
-import { AppContainer } from './styles';
+
+// Utils
+import { useAppSelector } from './hooks/hooks';
+import { selectTheme } from './slices/themeSlice';
+import { Themes } from './constants/themes';
 
 const App: React.FC = () => {
+  const selectedTheme = useAppSelector(selectTheme);
+
+  let theme;
+  if (selectedTheme === Themes.LightSide) {
+    theme = lightSide;
+  } else {
+    theme = darkSide;
+  }
+
   return (
     <Suspense fallback={<Loader />}>
-      <AppContainer>
-        <Header />
-        <AddList />
-        <ToDoLists />
-      </AppContainer>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <AppContainer>
+          <Header />
+          <AddList />
+          <ToDoLists />
+        </AppContainer>
+      </ThemeProvider>
     </Suspense>
   );
 };

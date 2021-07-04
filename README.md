@@ -11,9 +11,10 @@ Basic features:
 - Check/uncheck tasks
 - Delete tasks
 - Localized English/French
+- Light/dark theme
 
-Basic styling with `styled-components`.
-Icons from `styled-icons`.
+Basic styling with `styled-components`.</br>
+Icons from `styled-icons`.</br>
 Localization with `react-i18next`.
 
 ___
