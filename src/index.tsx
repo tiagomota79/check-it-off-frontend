@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './i18n';
 
-import { GlobalStyle } from './styles';
-
 // Sanitize CSS
 import 'sanitize.css';
 import 'sanitize.css/forms.css';
@@ -19,7 +17,6 @@ import 'sanitize.css/reduce-motion.css';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <GlobalStyle />
       <App />
     </Provider>
   </React.StrictMode>,
