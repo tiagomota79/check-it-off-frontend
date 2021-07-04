@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { colours } from '../../constants/colours';
 import { StylesConstants } from '../../constants/stylesConstants';
 
 export const ToDoListsContainer = styled.div`
@@ -10,7 +9,7 @@ export const ToDoListsContainer = styled.div`
 
 export const ListContainer = styled.div`
   width: 100%;
-  background-color: ${colours.offWhite};
+  background-color: ${({ theme }) => theme.listBackground};
   padding: ${StylesConstants.SmallMargin};
   border-radius: ${StylesConstants.BorderRadius};
   margin-bottom: ${StylesConstants.BorderRadius};
