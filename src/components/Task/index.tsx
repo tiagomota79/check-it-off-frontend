@@ -9,17 +9,19 @@ import { toggleTask, deleteTask, selectTasks } from '../../slices/tasksSlice';
 import { Icons } from '../../constants/icons';
 
 export interface IProps {
+  id: string;
   text: string;
   listTitle: string;
+  listId: string;
   active: boolean;
 }
 
-const Task: React.FC<IProps> = ({ text, listTitle, active }) => {
+const Task: React.FC<IProps> = ({ id, text, listTitle, listId, active }) => {
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks);
   const taskIndex = tasks.findIndex(
-    (task) => task.text === text && task.listTitle === listTitle
+    (task) => task.text === text && task.id === id
   );
 
   const checkTaskAction = () => {

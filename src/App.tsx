@@ -20,12 +20,7 @@ import { Themes } from './constants/themes';
 const App: React.FC = () => {
   const selectedTheme = useAppSelector(selectTheme);
 
-  let theme;
-  if (selectedTheme === Themes.LightSide) {
-    theme = lightSide;
-  } else {
-    theme = darkSide;
-  }
+  const theme = selectedTheme === Themes.LightSide ? lightSide : darkSide;
 
   return (
     <Suspense fallback={<Loader />}>
