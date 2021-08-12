@@ -24,6 +24,7 @@ const ToDoLists: React.FC = () => {
       {lists.map((list, index) => (
         <ListContainer key={index} theme={themeContext}>
           <List
+            id={list.id}
             title={list.title}
             description={list.description}
             active={list.active}

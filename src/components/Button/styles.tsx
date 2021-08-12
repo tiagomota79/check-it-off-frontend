@@ -10,13 +10,14 @@ export interface StyledButtonProps {
 export const StyledButton = styled.button<StyledButtonProps>`
   display: grid;
   place-items: center;
-  grid-gap: ${(props) => (props.withGap ? StylesConstants.GridGapSmall : 0)};
-  ${(props) => (props.withGap ? 'grid-template-columns: auto 20px;' : '')}
+  grid-gap: ${({ withGap }) => (withGap ? StylesConstants.GridGapSmall : 0)};
+  ${({ withGap }) => (withGap ? 'grid-template-columns: auto 20px;' : '')}
   border-radius: ${StylesConstants.BorderRadius};
   padding: 5px 10px;
   font-size: large;
+  font-family: MontserratSemiBold;
   height: ${StylesConstants.NormalHeight};
   min-width: ${StylesConstants.NormalHeight};
-  margin-right: ${(props) =>
-    props.withMargin ? StylesConstants.SmallMargin : 0};
+  margin-right: ${({ withMargin }) =>
+    withMargin ? StylesConstants.SmallMargin : 0};
 `;

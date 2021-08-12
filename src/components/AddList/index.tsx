@@ -9,6 +9,8 @@ import { useAppDispatch } from '../../hooks/hooks';
 import { createList } from '../../slices/listsSlice';
 import { Icons } from '../../constants/icons';
 
+import { generateRandomString } from '../../utils';
+
 const AddList: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
   const [listTitle, setListTitle] = useState<IList['title']>();
@@ -25,6 +27,7 @@ const AddList: React.FC = () => {
   const addListAction = () => {
     dispatch(
       createList({
+        id: generateRandomString(),
         title: listTitle,
         description: listDescription,
         active: true,

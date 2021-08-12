@@ -9,13 +9,15 @@ import { Input, Label } from '../AddList/styles';
 import { useAppDispatch } from '../../hooks/hooks';
 import { createTask } from '../../slices/tasksSlice';
 import { Icons } from '../../constants/icons';
+import { generateRandomString } from '../../utils';
 
 export interface IProps {
+  listId: string;
   listTitle: string;
   onCloseButton: (close: boolean) => void;
 }
 
-const AddTask: React.FC<IProps> = ({ listTitle, onCloseButton }) => {
+const AddTask: React.FC<IProps> = ({ listId, listTitle, onCloseButton }) => {
   const [taskText, setTaskText] = useState<ITask['text']>();
 
   const { t } = useTranslation();
@@ -24,8 +26,10 @@ const AddTask: React.FC<IProps> = ({ listTitle, onCloseButton }) => {
   const addTaskAction = () => {
     dispatch(
       createTask({
+        id: generateRandomString(),
         text: taskText,
         listTitle,
+        listId,
         active: true,
       })
     );

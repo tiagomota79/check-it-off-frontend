@@ -1,10 +1,13 @@
 interface ITask {
+  id: string;
   text: string;
   active: boolean;
   listTitle: string;
+  listId: string;
 }
 
 interface IList {
+  id: string;
   title: string;
   description: string;
   active: boolean;

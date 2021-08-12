@@ -29,5 +29,6 @@ export const AppContainer = styled.div`
   grid-template-rows: 90px 65px auto;
   place-items: center;
   font-size: calc(10px + 2vmin);
+  font-family: MontserratSemiBold;
   width: 100%;
 `;

@@ -19,13 +19,14 @@ import { selectTasks } from '../../slices/tasksSlice';
 import { Icons } from '../../constants/icons';
 
 export interface IProps {
+  id: string;
   title: string;
   description: string;
   active: boolean;
   index: number;
 }
 
-const List: React.FC<IProps> = ({ title, description, active, index }) => {
+const List: React.FC<IProps> = ({ id, title, description, active, index }) => {
   const [createTaskOpen, setCreateTaskOpen] = useState<boolean>(false);
   const [expanded, setExpanded] = useState<boolean>(false);
 
@@ -33,7 +34,7 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
   const dispatch = useAppDispatch();
 
   const tasks = useAppSelector(selectTasks).filter(
-    (task) => task.listTitle === title
+    (task) => task.listId === id
   );
 
   const expandToggle = () => {
@@ -84,14 +85,20 @@ const List: React.FC<IProps> = ({ title, description, active, index }) => {
         )}
       </ListButtons>
       {createTaskOpen && (
-        <AddTask listTitle={title} onCloseButton={setCreateTaskOpen} />
+        <AddTask
+          listId={id}
+          listTitle={title}
+          onCloseButton={setCreateTaskOpen}
+        />
       )}
       {expanded &&
         tasks.length > 0 &&
         tasks.map((task, index) => (
           <Task
             key={index}
+            id={task.id}
             text={task.text}
+            listId={task.listId}
             listTitle={task.listTitle}
             active={task.active}
           />

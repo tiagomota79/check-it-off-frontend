@@ -6,7 +6,7 @@ export const AddListContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Roboto;
+  font-family: MontserratSemiBold;
 `;
 
 export const Label = styled.label`

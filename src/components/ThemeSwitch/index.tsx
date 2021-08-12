@@ -1,6 +1,8 @@
 import React from 'react';
 import { Sun, Moon } from '@styled-icons/heroicons-solid';
 
+import { IconsToggleContainer } from './styles';
+
 import { Themes } from '../../constants/themes';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { selectTheme, toggleTheme } from '../../slices/themeSlice';
@@ -18,13 +20,13 @@ const ThemeSwitch: React.FC = () => {
   };
 
   return (
-    <div onClick={handleSwitchTheme}>
-      {selectedTheme === Themes.DarkSide ? (
-        <Sun size='22' />
-      ) : (
-        <Moon size='22' />
-      )}
-    </div>
+    <IconsToggleContainer
+      on={selectedTheme === Themes.DarkSide}
+      onClick={handleSwitchTheme}
+    >
+      <Sun size='30' />
+      <Moon size='30' />
+    </IconsToggleContainer>
   );
 };
 
